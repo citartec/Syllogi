@@ -1,5 +1,4 @@
-# 🎥 Flask YouTube Downloader (Linux Optimized)
-
+Flask YouTube Downloader 
 A local web app built with Flask that lets you:
 
 - Paste YouTube or video URLs
@@ -8,8 +7,7 @@ A local web app built with Flask that lets you:
 - 🔍 Reveal the downloaded file in your Linux file manager (Nautilus, Dolphin, etc.)
 
 ---
-
-## 🚀 Features
+Features
 
 - Format: `bv*+ba/b` (best video + best audio, fallback to best available)
 - Auto-merges video/audio to `.mp4`
@@ -19,7 +17,7 @@ A local web app built with Flask that lets you:
 
 ---
 
-## 📦 Requirements
+Requirements
 
 - Python 3.7+
 - Linux OS (Ubuntu, Arch, Fedora, etc.)
@@ -27,12 +25,13 @@ A local web app built with Flask that lets you:
 - ffmpeg (for merging video/audio)
 - Flask
 
-### 🧰 Install Dependencies
+Install Dependencies
 
 ```bash
 sudo apt update
 sudo apt install ffmpeg
 pip install flask yt-dlp
+
 
 
 http://127.0.0.1:5000
