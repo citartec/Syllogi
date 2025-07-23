@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Downloader</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            color: #eee;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #2a82da;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        button:hover {
+            background-color: #1b6db0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .filename {
+            font-size: 0.9em;
+            margin-top: 6px;
+            color: #aaa;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Downloader</h1>
+
+    <form method="POST">
+        <input type="text" name="url" placeholder="Enter video URL" required>
+        <button type="submit">Download</button>
+    </form>
+
+    <h2>Downloaded Videos</h2>
+    <div class="video-grid">
+        {% for video in videos %}
+            <div class="video-card">
+                <video controls muted preload="metadata">
+                    <source src="{{ url_for('static', filename='downloads/' + video.name) }}">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="filename">{{ video.name }}</p>
+                <form action="{{ url_for('reveal_in_folder', filename=video.name) }}" method="get">
+                    <button type="submit">📂 Show in Folder</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
