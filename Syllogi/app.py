@@ -20,6 +20,7 @@ def index():
                 logging.info(f"Starting download: {url}")
                 subprocess.run([
                     "yt-dlp",
+                    "--cookies-from-browser", "firefox",
                     "-f", "bv*+ba/b",
                     "--merge-output-format", "mp4",
                     "-o", "%(title)s.%(ext)s",
@@ -72,4 +73,3 @@ def reveal_in_folder(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
